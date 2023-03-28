@@ -22,6 +22,18 @@ function App() {
   /**
    * fetch data from api on mount. 
    */
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const json = await response.json();
+        setData(json);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
   <div className='App'>
